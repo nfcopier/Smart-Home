@@ -1,7 +1,7 @@
 // noinspection SpellCheckingInspection
 
 import {myQApi as Account, myQDevice as Device} from "@koush/myq";
-import * as crypto from "node:crypto";
+import * as crypto from "crypto";
 import NoopLogger from "./noop-logger";
 import BasicCredentials from "./basic-credentials";
 
