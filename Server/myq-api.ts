@@ -7,14 +7,18 @@ import BasicCredentials from "./basic-credentials";
 
 const SECRET = 'gnhkjshe3ltn0tnhne4j5grg4njk';
 
+interface DeviceStatus {
+    status: string
+}
+
 export default class MyqApi {
 
     private static accounts: {[token: string]: Account} = {};
 
-    public async getStatus(creds: BasicCredentials): Promise<string> {
+    public async getStatus(creds: BasicCredentials): Promise<DeviceStatus> {
         const account = await this.getAccount(creds);
         const opener = this.getDoorOpener(account);
-        return opener.state.door_state;
+        return {status: opener.state.door_state};
     }
 
     public async openDoor(creds: BasicCredentials): Promise<void> {
