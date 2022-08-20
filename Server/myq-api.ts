@@ -38,7 +38,9 @@ export default class MyqApi {
         const token = this.encrypt(`${email}-${password}`);
         if (MyqApi.accounts[token] == null)
             MyqApi.accounts[token] = await this.login(email, password);
-        return MyqApi.accounts[token];
+        const account = MyqApi.accounts[token];
+        await account.refreshDevices();
+        return account;
     }
 
     private async login(email: string, password: string, attempt = 0) {
