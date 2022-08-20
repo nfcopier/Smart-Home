@@ -22,7 +22,7 @@ if (certRoot == null) {
 } else {
     const credentials = {
         key: fs.readFileSync(path.join(certRoot, "privkey.pem")),
-        certificate: fs.readFileSync(path.join(certRoot, "cert.pem")),
+        cert: fs.readFileSync(path.join(certRoot, "cert.pem")),
         ca: fs.readFileSync(path.join(certRoot, "chain.pem"))
     };
     const server = https.createServer(credentials, app);
