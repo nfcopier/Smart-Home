@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node build/server.js"
+    "start": "node build/server.js",
+    "build": "tsc --project tsconfig.json"
   },
   "dependencies": {
     "@koush/myq": "^1.0.9",
