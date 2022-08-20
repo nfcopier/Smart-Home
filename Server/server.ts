@@ -9,7 +9,7 @@ const certRoot = process.env.CERTIFICATE_ROOT;
 const app = Express();
 app.use(Express.json());
 
-app.get("healthcheck", (_, response: Express.Response) => {
+app.get("/healthcheck", (_, response: Express.Response) => {
     response.status(200).send("true");
 });
 
