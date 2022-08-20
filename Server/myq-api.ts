@@ -4,6 +4,7 @@ import {myQApi as Account, myQDevice as Device} from "@koush/myq";
 import * as crypto from "crypto";
 import NoopLogger from "./noop-logger";
 import BasicCredentials from "./basic-credentials";
+import LoginError from "./login-error";
 
 const SECRET = 'gnhkjshe3ltn0tnhne4j5grg4njk';
 
@@ -40,9 +41,14 @@ export default class MyqApi {
         return MyqApi.accounts[token];
     }
 
-    private async login(email: string, password: string) {
+    private async login(email: string, password: string, attempt = 0) {
         const account = new Account(() => {}, new NoopLogger(), email, password);
         await account.refreshDevices();
+        if (account.devices == null) {
+            if (attempt === 3) throw new LoginError();
+            await this.time(500);
+            await this.login(email, password, attempt + 1)
+        }
         return account;
     }
 
@@ -53,6 +59,10 @@ export default class MyqApi {
     private getDoorOpener (account: Account): Device {
         // noinspection SpellCheckingInspection
         return account.devices.find(d => d.device_type === "virtualgaragedooropener");
+    }
+
+    private time(milliseconds: number): Promise<void> {
+        return new Promise((resolve) => setTimeout(resolve, milliseconds));
     }
 
 }
