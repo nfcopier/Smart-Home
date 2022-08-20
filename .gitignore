@@ -1,0 +1,16 @@
+
+Server/.idea/
+
+Server/build/
+
+Server/node_modules/
+
+Server/package-lock.json
+
+Tizen App/.idea/
+
+Tizen App/build/
+
+Tizen App/node_modules/
+
+Tizen App/package-lock.json

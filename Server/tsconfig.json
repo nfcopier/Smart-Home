@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "./build",
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "jsx": "react",
+    "newLine": "lf"
+  },
+  "exclude": [
+    "./rollup.config.js"
+  ]
+}
