@@ -14,6 +14,7 @@ export default () => {
             const status = await api.getStatus(credentials);
             response.status(200).send(status);
         } catch (error) {
+            console.log(error);
             response.sendStatus(500);
         }
     });
@@ -24,6 +25,7 @@ export default () => {
             await api.openDoor(credentials);
             response.sendStatus(200);
         } catch (error) {
+            console.log(error);
             response.sendStatus(500);
         }
     });
@@ -34,6 +36,7 @@ export default () => {
             await api.closeDoor(credentials);
             response.sendStatus(200);
         } catch (error) {
+            console.log(error);
             response.sendStatus(500);
         }
     });
