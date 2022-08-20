@@ -3,11 +3,13 @@ import * as https from "https";
 import * as fs from "fs";
 import * as path from "path";
 import MyqRouter from "./myq-router";
+import * as cors from "cors";
 
 const certRoot = process.env.CERTIFICATE_ROOT;
 
 const app = Express();
 app.use(Express.json());
+app.use(cors());
 
 app.get("/healthcheck", (_, response: Express.Response) => {
     response.status(200).send("true");
